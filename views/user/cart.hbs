@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <h1 class="text-center">Cart</h1>
+    </div>
+
+    <div class="row">
+        <table class="table ">
+            <thead>
+                <th>Item</th>
+                <th>Title</th>
+                <th>Quantity</th>
+            </thead>
+            <tbody>
+                {{#each products}}
+                <tr>
+                    <td><img style="width: 70px; height:70px;" src="/product-images/{{this._id}}.jpg" alt=""></td>
+                    <td>{{this.Name}}</td>
+                    <td>
+                        <button class="me-3">-</button>1<button class="ms-3">+</button>
+                    </td>
+                    <td><a href="" class="btn btn-danger">Remove</a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+ 

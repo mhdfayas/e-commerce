@@ -1,0 +1,94 @@
+{{!-- <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow" style="width: 24rem;">
+      <h3 class="text-center mb-4">Sign Up</h3>
+      <form action="/signup" method="post">
+        <div class="mb-3">
+          <label for="name" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Create a password" required>
+        </div>
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-success">Sign Up</button>
+        </div>
+        <p class="text-center mt-3">
+          Already have an account? <a href="/login" class="text-decoration-none">Login</a>
+        </p>
+      </form>
+    </div>
+  </div> --}}
+  <head>
+   <style>
+    .error-message {
+      color: red;
+      font-size: 0.875rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow" style="width: 24rem;">
+      <h3 class="text-center mb-4">Sign Up</h3>
+      <form id="signupForm" action="/signup" method="post">
+        <div class="mb-3">
+          <label for="name" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="email" name="email"  placeholder="Enter your email" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Create a password" required>
+        </div>
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
+          <div class="error-message" id="errorMessage">Passwords do not match.</div>
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-success">Sign Up</button>
+        </div>
+        <p class="text-center mt-3">
+          Already have an account? <a href="/login" class="text-decoration-none">Login</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script>
+    // JavaScript for password validation
+    const form = document.getElementById('signupForm');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirmPassword');
+    const errorMessage = document.getElementById('errorMessage');
+
+    form.addEventListener('submit', function (event) {
+      if (password.value !== confirmPassword.value) {
+        event.preventDefault(); // Prevent form submission
+        errorMessage.style.display = 'block'; // Show error message
+      } else {
+        errorMessage.style.display = 'none'; // Hide error message if passwords match
+      }
+    });
+
+    // Real-time validation (optional)
+    confirmPassword.addEventListener('input', function () {
+      if (password.value === confirmPassword.value) {
+        errorMessage.style.display = 'none';
+      }
+    });
+  </script>
