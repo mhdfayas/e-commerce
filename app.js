@@ -33,11 +33,20 @@ app.use(fileUpload())
 
 app.use(session({secret: "key",resave: false,saveUninitialized: false,cookie:{maxAge: 600000}}));
 
+// database connection
 
-db.connect((err)=>{
-  if(err) console.log("Database connection failes:",err)
-  else console.log("Database connected succesfullly")  
-})
+// db.connect((err)=>{
+//   if(err) console.log("Database connection failes:",err)
+//   else console.log("Database connected succesfullly")  
+// })
+
+const mongoose = require("mongoose");
+require("dotenv").config(); // Ensure dotenv is used
+
+mongoose
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("MongoDB Connected Successfully"))
+  .catch((err) => console.log("MongoDB Connection Error:", err));
 
 app.use('/', userRouter);
 app.use('/admin', adminRouter);
